@@ -1,19 +1,114 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
 
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const values = [
+    {
+        title: 'Solidaritas',
+        description: 'Menguatkan persatuan dan kebersamaan',
+        icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
+    },
+    {
+        title: 'Intelektualitas',
+        description: 'Menjunjung tinggi pemikiran kritis dan ilmiah',
+        icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'
+    },
+    {
+        title: 'Pengabdian',
+        description: 'Berkontribusi nyata kepada masyarakat',
+        icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
+    },
+    {
+        title: 'Integritas',
+        description: 'Menjaga etika dan tanggung jawab organisasi',
+        icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+    }
+];
 ---
 
-<Layout title="Welcome to Astro.">
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Beranda">
+    <!-- Hero Section -->
+    <section class="bg-primary-dark text-white py-20 sm:py-28 lg:py-32">
+        <div class="container-custom">
+            <div class="max-w-3xl">
+                <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                    SMSG
+                </h1>
+                <p class="text-accent text-xl sm:text-2xl font-semibold mb-6">
+                    Solidaritas Mahasiswa SMSG
+                </p>
+                <p class="text-white/90 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl">
+                    Wadah persatuan dan pengembangan mahasiswa SMSG dalam membangun kontribusi nyata bagi masyarakat, daerah, dan bangsa melalui intelektualitas, solidaritas, dan pengabdian.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="/tentang" class="btn btn-accent btn-lg">
+                        Tentang SMSG
+                    </a>
+                    <a href="/kontak" class="btn btn-outline btn-lg border-white text-white hover:bg-white hover:text-primary-dark">
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container-custom">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="mb-6">Sekilas Tentang SMSG</h2>
+                <p class="text-lg leading-relaxed">
+                    SMSG merupakan organisasi mahasiswa yang menjadi wadah aspirasi, pengembangan potensi, serta penguatan solidaritas antar mahasiswa. SMSG berkomitmen untuk mencetak generasi yang berintegritas, berwawasan luas, dan memiliki kepedulian sosial yang tinggi.
+                </p>
+                <div class="mt-8">
+                    <a href="/tentang" class="btn btn-primary">
+                        Selengkapnya
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section section-alt">
+        <div class="container-custom">
+            <div class="text-center mb-12">
+                <h2 class="mb-4">Nilai-Nilai Utama</h2>
+                <p class="text-text-light max-w-2xl mx-auto">
+                    Prinsip-prinsip yang menjadi landasan SMSG dalam menjalankan setiap program dan kegiatan.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {values.map((value) => (
+                    <div class="value-card text-center">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={value.icon} />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-primary-dark mb-2">{value.title}</h3>
+                        <p class="text-text-light text-sm">{value.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section bg-primary">
+        <div class="container-custom text-center">
+            <h2 class="text-white mb-4">Bergabung Bersama SMSG</h2>
+            <p class="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
+                Mari bersama membangun solidaritas dan berkontribusi nyata bagi masyarakat, daerah, dan bangsa.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="/program" class="btn btn-accent btn-lg">
+                    Lihat Program Kami
+                </a>
+                <a href="/kontak" class="btn btn-outline btn-lg border-white text-white hover:bg-white hover:text-primary">
+                    Hubungi Kami
+                </a>
+            </div>
+        </div>
+    </section>
 </Layout>

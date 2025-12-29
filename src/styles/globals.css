@@ -2,77 +2,139 @@
 
 @theme {
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
-    --background-image-noise: linear-gradient(
-            to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
-        ),
-        url('/images/noise.png');
+
+    /* SMSG Color Palette */
+    --color-dark-green: #1F4D2B;
+    --color-green: #2E7D32;
+    --color-yellow: #F4C430;
+    --color-red: #C62828;
+    --color-white: #FFFFFF;
+    --color-dark-gray: #1E1E1E;
+
+    /* Primary colors */
+    --color-primary: #2E7D32;
+    --color-primary-dark: #1F4D2B;
+    --color-primary-content: #FFFFFF;
+    --color-accent: #F4C430;
+    --color-accent-red: #C62828;
+    --color-text: #1E1E1E;
+    --color-text-light: #4A5568;
+    --color-background: #FFFFFF;
+    --color-background-alt: #F7F9FC;
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply text-text bg-background;
+    }
+
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-3xl font-bold tracking-tight text-primary-dark sm:text-4xl lg:text-5xl;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-2xl font-bold text-primary-dark sm:text-3xl;
     }
 
-    a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+    h3 {
+        @apply text-xl font-semibold text-primary-dark sm:text-2xl;
     }
 
-    pre {
-        @apply p-6 overflow-x-auto rounded-lg;
+    h4 {
+        @apply text-lg font-semibold text-dark-gray;
     }
 
-    :not(pre) > code {
-        @apply px-1 py-0.5 font-mono rounded bg-gray-900 text-primary;
-        font-size: 0.9em;
+    p {
+        @apply text-text-light leading-relaxed;
+    }
+
+    a:not(.btn):not(.nav-link) {
+        @apply text-primary transition hover:text-primary-dark;
+
     }
 }
 
 @layer components {
-    .markdown {
-        > * {
-            @apply my-6;
-        }
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 cursor-pointer text-center font-semibold no-underline transition-all duration-200;
+        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.5rem);
+        font-size: var(--btn-font-size, 0.875rem);
+        border-radius: var(--btn-border-radius, 0.375rem);
+    }
 
-        :where(h1, h2) {
-            @apply mt-12 mb-6;
-        }
+    .btn-primary {
+        @apply bg-primary text-white;
 
-        > :first-child {
-            @apply mt-0;
-        }
-
-        > :last-child {
-            @apply mb-0;
+        &:hover {
+            @apply bg-primary-dark;
         }
     }
 
-    .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
-        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
-        font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
+    .btn-outline {
+        @apply bg-transparent text-primary border-2 border-primary;
 
         &:hover {
-            @apply bg-primary/85;
+            @apply bg-primary text-white;
         }
+    }
 
-        &:disabled {
-            @apply text-gray-400 bg-gray-700;
+    .btn-accent {
+        @apply bg-accent text-dark-gray;
+
+        &:hover {
+            @apply bg-yellow/90;
         }
     }
 
     .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
-        --btn-py: 1.125rem;
+        --btn-font-size: 1rem;
+        --btn-px: 2rem;
+        --btn-py: 1rem;
+    }
+
+    .btn-sm {
+        --btn-font-size: 0.875rem;
+        --btn-px: 1rem;
+        --btn-py: 0.5rem;
+    }
+
+    .section {
+        @apply py-16 sm:py-20 lg:py-24;
+    }
+
+    .section-alt {
+        @apply bg-background-alt;
+    }
+
+    .container-custom {
+        @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+
+    .card {
+        @apply bg-white rounded-lg shadow-md p-6 transition-shadow hover:shadow-lg;
+    }
+
+    .nav-link {
+        @apply text-white no-underline transition-colors duration-200;
+
+        &:hover {
+            @apply text-accent;
+        }
+
+        &.active {
+            @apply text-accent;
+        }
+    }
+
+    .value-card {
+        @apply bg-white rounded-lg p-6 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow;
+    }
+
+    .program-card {
+        @apply bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-200 border border-gray-100;
     }
 }

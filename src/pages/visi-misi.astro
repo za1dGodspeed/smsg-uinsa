@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const missions = [
+    {
+        number: '01',
+        title: 'Menghimpun Solidaritas',
+        description: 'Menghimpun dan mempererat solidaritas antar mahasiswa'
+    },
+    {
+        number: '02',
+        title: 'Mengembangkan Potensi',
+        description: 'Mengembangkan potensi intelektual, kepemimpinan, dan kreativitas anggota'
+    },
+    {
+        number: '03',
+        title: 'Wadah Aspirasi',
+        description: 'Menjadi wadah aspirasi dan komunikasi mahasiswa'
+    },
+    {
+        number: '04',
+        title: 'Peran Aktif Sosial',
+        description: 'Mendorong peran aktif mahasiswa dalam kegiatan sosial dan pengabdian masyarakat'
+    },
+    {
+        number: '05',
+        title: 'Kerja Sama',
+        description: 'Menjalin kerja sama dengan berbagai pihak untuk kemajuan organisasi dan daerah'
+    }
+];
+---
+
+<Layout title="Visi & Misi" description="Visi dan misi SMSG dalam membangun sumber daya manusia yang berkarakter, berintegritas, dan peduli terhadap masyarakat.">
+    <!-- Page Header -->
+    <section class="bg-primary-dark text-white py-16 sm:py-20">
+        <div class="container-custom">
+            <h1 class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                Visi & Misi
+            </h1>
+            <p class="text-white/80 text-lg max-w-2xl">
+                Arah dan tujuan SMSG dalam membangun generasi mahasiswa yang berkualitas dan berdaya guna.
+            </p>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section">
+        <div class="container-custom">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <span class="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-4">
+                        Visi
+                    </span>
+                    <h2 class="mb-6">Visi Organisasi</h2>
+                </div>
+                <div class="bg-primary-dark text-white p-8 sm:p-12 rounded-2xl text-center">
+                    <svg class="w-12 h-12 text-accent mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                    <p class="text-xl sm:text-2xl leading-relaxed font-medium">
+                        Menjadi organisasi mahasiswa yang solid, progresif, dan berdaya guna dalam membangun sumber daya manusia yang berkarakter, berintegritas, dan peduli terhadap masyarakat.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section section-alt">
+        <div class="container-custom">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-4">
+                    Misi
+                </span>
+                <h2 class="mb-4">Misi Organisasi</h2>
+                <p class="text-text-light max-w-2xl mx-auto">
+                    Langkah-langkah strategis yang dijalankan SMSG untuk mewujudkan visi organisasi.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                {missions.map((mission) => (
+                    <div class="program-card">
+                        <div class="text-4xl font-bold text-primary/20 mb-4">{mission.number}</div>
+                        <h3 class="text-lg font-semibold text-primary-dark mb-2">{mission.title}</h3>
+                        <p class="text-text-light">{mission.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Reminder -->
+    <section class="section">
+        <div class="container-custom">
+            <div class="bg-background-alt rounded-2xl p-8 sm:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="mb-4">Komitmen Kami</h2>
+                        <p class="text-text-light text-lg leading-relaxed">
+                            SMSG berkomitmen untuk terus mengembangkan potensi mahasiswa dan memberikan kontribusi nyata bagi masyarakat melalui berbagai program dan kegiatan yang berlandaskan nilai-nilai solidaritas, intelektualitas, pengabdian, dan integritas.
+                        </p>
+                    </div>
+                    <div class="flex justify-center lg:justify-end">
+                        <a href="/program" class="btn btn-primary btn-lg">
+                            Lihat Program Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

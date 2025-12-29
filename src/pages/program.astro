@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const programs = [
+    {
+        title: 'Pengembangan SDM Mahasiswa',
+        description: 'Pelatihan, diskusi, dan kajian keilmuan untuk meningkatkan kapasitas dan kompetensi anggota.',
+        icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+        activities: [
+            'Pelatihan kepemimpinan',
+            'Diskusi dan kajian ilmiah',
+            'Workshop pengembangan skill',
+            'Seminar dan webinar'
+        ]
+    },
+    {
+        title: 'Kegiatan Sosial & Pengabdian',
+        description: 'Aksi sosial, bakti masyarakat, dan kegiatan kemanusiaan sebagai bentuk kepedulian terhadap sesama.',
+        icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+        activities: [
+            'Bakti sosial masyarakat',
+            'Kegiatan kemanusiaan',
+            'Donor darah',
+            'Pengabdian kepada masyarakat'
+        ]
+    },
+    {
+        title: 'Forum Aspirasi Mahasiswa',
+        description: 'Menyalurkan gagasan dan aspirasi secara konstruktif untuk kemajuan bersama.',
+        icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
+        activities: [
+            'Forum diskusi terbuka',
+            'Musyawarah anggota',
+            'Penyaluran aspirasi',
+            'Dialog konstruktif'
+        ]
+    },
+    {
+        title: 'Penguatan Solidaritas',
+        description: 'Kegiatan internal untuk mempererat kebersamaan dan kekeluargaan antar anggota.',
+        icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
+        activities: [
+            'Gathering anggota',
+            'Kegiatan kekeluargaan',
+            'Silaturahmi',
+            'Olahraga bersama'
+        ]
+    }
+];
+---
+
+<Layout title="Program & Kegiatan" description="Program unggulan dan kegiatan SMSG dalam pengembangan SDM, kegiatan sosial, dan penguatan solidaritas mahasiswa.">
+    <!-- Page Header -->
+    <section class="bg-primary-dark text-white py-16 sm:py-20">
+        <div class="container-custom">
+            <h1 class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                Program & Kegiatan
+            </h1>
+            <p class="text-white/80 text-lg max-w-2xl">
+                Program unggulan SMSG dalam mengembangkan potensi mahasiswa dan berkontribusi kepada masyarakat.
+            </p>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section">
+        <div class="container-custom">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-4">
+                    Program Unggulan
+                </span>
+                <h2 class="mb-4">Program Unggulan SMSG</h2>
+                <p class="text-text-light max-w-2xl mx-auto">
+                    Berbagai program yang dirancang untuk pengembangan kapasitas anggota dan kontribusi kepada masyarakat.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {programs.map((program) => (
+                    <div class="program-card">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={program.icon} />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-primary-dark mb-2">{program.title}</h3>
+                                <p class="text-text-light">{program.description}</p>
+                            </div>
+                        </div>
+                        <div class="pl-18 ml-18">
+                            <h4 class="text-sm font-semibold text-dark-gray mb-3 uppercase tracking-wide">Bentuk Kegiatan:</h4>
+                            <ul class="grid grid-cols-2 gap-2">
+                                {program.activities.map((activity) => (
+                                    <li class="flex items-center gap-2 text-sm text-text-light">
+                                        <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        {activity}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight Section -->
+    <section class="section section-alt">
+        <div class="container-custom">
+            <div class="bg-white rounded-2xl p-8 sm:p-12 shadow-lg">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary-dark mb-2">Pengembangan</h3>
+                        <p class="text-text-light">Meningkatkan kapasitas dan kompetensi anggota</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary-dark mb-2">Kolaborasi</h3>
+                        <p class="text-text-light">Kerja sama dengan berbagai pihak</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary-dark mb-2">Pengabdian</h3>
+                        <p class="text-text-light">Kontribusi nyata kepada masyarakat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section bg-primary">
+        <div class="container-custom text-center">
+            <h2 class="text-white mb-4">Tertarik Berpartisipasi?</h2>
+            <p class="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
+                Hubungi kami untuk informasi lebih lanjut tentang program dan kegiatan SMSG.
+            </p>
+            <a href="/kontak" class="btn btn-accent btn-lg">
+                Hubungi Kami
+            </a>
+        </div>
+    </section>
+</Layout>
