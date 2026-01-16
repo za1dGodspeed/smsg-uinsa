@@ -34,7 +34,7 @@ export default defineConfig({
         path: 'content/posts', // <-- your folder
         format: 'md',
         fields: [
-          { name: 'title', label: 'Judul Kegiatan', type: 'string', required: true },
+          { name: 'title', label: 'Judul', type: 'string', required: true, isTitle: true },
           { name: 'date', label: 'Tanggal', type: 'datetime', required: true },
           { name: 'category', label: 'Kategori', type: 'string', options: ['Pengabdian', 'SDM', 'Aspirasi', 'Solidaritas'], required: true },
           { name: 'cover', label: 'Foto Cover', type: 'image', required: true },
