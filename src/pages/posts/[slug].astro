@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { client } from '../../../tina/__generated__/client';
+import { TinaMarkdown } from 'tinacms/dist/rich-text'; // Tina rich-text renderer
+
+export async function getStaticPaths() {
+  const posts = await client.queries.postConnection();
+  return posts.data.postConnection.edges.map(({ node }) => ({
+    params: { slug: node._sys.filename },   // filename = slug
+    props: { post: node },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={`${post.title}`}>
+  <header class="bg-primary-dark text-white py-12">
+      <div class="container-custom">
+        <a href="/galeri" class="text-accent hover:underline text-sm mb-4 inline-block">← Kembali ke Galeri</a>
+        <h1 class="text-white text-3xl sm:text-4xl font-bold">{post.title}</h1>
+        <p class="text-white/80 mt-2">
+          {new Date(post.date).toLocaleDateString('id-ID', { dateStyle: 'long' })}
+        </p>
+        <span class="inline-block mt-3 px-3 py-1 bg-accent text-dark-gray text-xs font-semibold rounded-full">
+          {post.category}
+        </span>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container-custom max-w-4xl">
+        <!-- Cover -->
+        <img
+          src={post.cover}
+          alt={post.title}
+          class="w-full h-auto rounded-2xl shadow-lg mb-8"
+        />
+
+        <!-- Rich-text body -->
+        <article
+          class="prose prose-lg max-w-none text-text-light"
+        /> 
+          <TinaMarkdown content={post.body} client:load />
+        </article>
+        <!-- CTA -->
+        <div class="mt-12 text-center">
+          <a href="/galeri" class="btn btn-primary">Lihat Galeri Lainnya</a>
+        </div>
+      </div>
+    </main>
+</Layout>

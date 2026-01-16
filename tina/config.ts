@@ -21,7 +21,7 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "",
+      mediaRoot: "uploads",
       publicFolder: "public",
     },
   },
@@ -29,23 +29,17 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
+        name: 'post',
+        label: 'Berita / Galeri',
+        path: 'content/posts', // <-- your folder
+        format: 'md',
         fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
+          { name: 'title', label: 'Judul Kegiatan', type: 'string', required: true },
+          { name: 'date', label: 'Tanggal', type: 'datetime', required: true },
+          { name: 'category', label: 'Kategori', type: 'string', options: ['Pengabdian', 'SDM', 'Aspirasi', 'Solidaritas'], required: true },
+          { name: 'cover', label: 'Foto Cover', type: 'image', required: true },
+          { name: 'body', label: 'Deskripsi', type: 'rich-text', isBody: true },
+          { name: 'draft', label: 'Draft', type: 'boolean', defaultValue: false },
         ],
       },
     ],
