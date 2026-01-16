@@ -30,7 +30,7 @@ export default defineConfig({
     collections: [
       {
         name: 'post',
-        label: 'Berita',
+        label: 'Berita / Galeri',
         path: 'content/posts', // <-- your folder
         format: 'md',
         fields: [
@@ -39,6 +39,7 @@ export default defineConfig({
           { name: 'category', label: 'Kategori', type: 'string', options: ['Pengabdian', 'SDM', 'Aspirasi', 'Solidaritas'], required: true },
           { name: 'cover', label: 'Foto Cover', type: 'image', required: true },
           { name: 'body', label: 'Deskripsi', type: 'rich-text', isBody: true },
+          { name: 'draft', label: 'Draft', type: 'boolean', defaultValue: false },
         ],
       },
     ],
